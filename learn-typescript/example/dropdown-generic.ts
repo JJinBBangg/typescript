@@ -22,5 +22,5 @@ function createDropdownItem(item) {
 emails.forEach(function (email) {
   const item = createDropdownItem(email);
   const selectTag = document.querySelector('#email-dropdown');
-  selectTag.appendChild(item);
+  if(selectTag)selectTag.appendChild(item);
 });
