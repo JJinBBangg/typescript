@@ -1,8 +1,10 @@
+import axios from "axios";
+import { Chart } from "chart.js";
 // utils
-function $(selector) {
+function $(selector: string) {
   return document.querySelector(selector);
 }
-function getUnixTimestamp(date) {
+function getUnixTimestamp(date: Date) {
   return new Date(date).getTime();
 }
 
@@ -17,7 +19,7 @@ const recoveredList = $(".recovered-list");
 const deathSpinner = createSpinnerElement("deaths-spinner");
 const recoveredSpinner = createSpinnerElement("recovered-spinner");
 
-function createSpinnerElement(id) {
+function createSpinnerElement(id: string) {
   const wrapperDiv = document.createElement("div");
   wrapperDiv.setAttribute("id", id);
   wrapperDiv.setAttribute(
@@ -36,11 +38,25 @@ function createSpinnerElement(id) {
 let isDeathLoading = false;
 let isRecoveredLoading = false;
 
+// jsdoc을 활용하여 타입정의
+// /**
+//  * @typedef {Object} CovidSummary
+//  * @property {Array<object>} Country
+//  */
+// /**
+//  *
+//  * @returns {Promise<CovidSummary>}
+//  */
 // api
 function fetchCovidSummary() {
   const url = "https://api.covid19api.com/summary";
   return axios.get(url);
 }
+
+// jsdoc을 활용하여 타입정의
+// var oo = fetchCovidSummary().then((res) => {
+//   res.Country;
+// });
 
 function fetchCountryInfo(countryCode, status) {
   // params: confirmed, recovered, deaths

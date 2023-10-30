@@ -1,4 +1,5 @@
 type Heroes = "Hulk" | "Thor" | "Capt";
+
 type HeroAges = {
   [P in Heroes]: number;
 };
